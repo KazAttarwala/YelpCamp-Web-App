@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= foundBlog.title %></div>
+    
+    <form action="/blogs/<%= foundBlog._id %>?_method=PUT" method="POST" class="ui form">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="foundBlog[title]" value="<%= foundBlog.title %>" required="true">
+        </div>
+        <div class="field">
+            <label>Image Url</label>
+            <input type="text" name="foundBlog[image]" value="<%= foundBlog.image %>">
+        </div>
+         <div class="field">
+            <label>Body</label>
+            <textarea name="foundBlog[body]" required="true"><%= foundBlog.body %></textarea>
+        </div>
+        <div>Note: You can include html tags to style your post</div>
+        <br>
+        <div class="ui buttons">
+            <a class="ui button" href="/blogs">Cancel</a>
+            <div class="or"></div>
+            <button class="ui positive button" type="submit">Save</button>
+        </div>
+    </form>
+    
+</div>
+
+
+<% include partials/footer %>

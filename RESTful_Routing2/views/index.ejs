@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+<% blogs.forEach(function(blog){ %>
+    <h2><%= blog.title %></h2>
+    <img src="<%= blog.image %>"></img>
+    <p class="extra">Created on <%= blog.createdTS.toDateString() %></p>
+    <p class="description"><%= blog.body%>...</p>
+        <a href="/blogs/<%= blog.id %>" class="ui vertical animated basic blue button" tabindex="0">
+            <div class="hidden content">Read more</div>
+            <div class="visible content">
+                <i class="info icon"></i>
+            </div>
+        </a>
+        <a href="/blogs/<%= blog.id %>/edit" class="ui vertical animated basic button" tabindex="0">
+            <div class="hidden content">Edit</div>
+            <div class="visible content">
+                <i class="edit icon"></i>
+            </div>
+        </a>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" id="delete">
+           <button class="ui vertical animated basic red button" type="submit">
+            <div class="hidden content">Delete</div>
+            <div class="visible content">
+                <i class="trash alternative icon"></i>
+            </div>
+           </button>
+        </form>
+<% }) %>
+
+<% include partials/footer %>

@@ -1,0 +1,26 @@
+<% include partials/header %>
+
+<div class="ui main text container">
+    <div class="ui huge header"><%= foundBlog.title %></div>
+    <div class="ui top attached segment">
+        <div class="item">
+            <div class="ui centered rounded image">
+                <img src="<%= foundBlog.image %>"></img>
+            </div>
+            <div class="content">
+                <div class="description">
+                    <p><%- foundBlog.body %></p>
+                </div>
+                <div class="extra">
+                    Created on <%= foundBlog.createdTS.toDateString() %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/blogs/<%= foundBlog._id %>/edit" class="ui animated basic button" tabindex="0">Edit Post</a>
+    <form action="/blogs/<%= foundBlog._id %>?_method=DELETE" method="POST" id="delete">
+       <button class="ui red basic button" type="submit">Delete Post</button>
+    </form>
+</div>
+
+<% include partials/footer %>

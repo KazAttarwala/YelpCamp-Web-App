@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Yelp Camp</p>
+            <div class="list-group">
+                <li class="list-group-item">Item 1</li>
+                <li class="list-group-item">Item 1</li>
+                <li class="list-group-item">Item 1</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= foundCampground.image %>">
+                <div class="caption">
+                    <h4 class="pull-right">$9.00/night</h4>
+                    <h4>
+                        <a href=""><%= foundCampground.name %></a>
+                    </h4>
+                    <p><%= foundCampground.description %></p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a href="/campgrounds/<%= foundCampground._id %>/comments/new" class="btn btn-primary">Leave a Review</a>
+                </div>
+                <hr>
+                <% foundCampground.comments.forEach(function(comment) { %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="glyphicon glyphicon-user"> </span><strong><%= comment.author %></strong>
+                                <span class="pull-right"><%= comment.createdTS.toDateString() %></span>
+                                <p><%= comment.text %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
